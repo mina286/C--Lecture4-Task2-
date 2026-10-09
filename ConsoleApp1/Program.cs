@@ -36,8 +36,21 @@
                     case "A":
                         Console.Write("Enter an integer to add : ");
                         int InputNumber = Convert.ToInt32(Console.ReadLine());
-                        Numbers.Add(InputNumber);
-                        Console.WriteLine($"{InputNumber} added ");
+                        bool IsDuplicate = false;
+                        for (int i = 0; i < Numbers.Count; i++)
+                        {
+                            if(InputNumber == Numbers[i])
+                            {
+                                Console.WriteLine($"{InputNumber} is already in the list");
+                                IsDuplicate = true;
+                                break;
+                            }
+                        }
+                        if (!IsDuplicate)
+                        {
+                            Numbers.Add(InputNumber);
+                            Console.WriteLine($"{InputNumber} added ");
+                        }                   
                         break;
 
                     case "M":
