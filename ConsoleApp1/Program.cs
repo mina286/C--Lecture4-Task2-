@@ -22,13 +22,15 @@
                 switch (ChoiseUser)
                 {
                     case "P":
-
-                        if (Numbers.Count == 0)
+                        if (Numbers.Count > 0)
+                        {
+                            Console.WriteLine($"The List is - [{string.Join(" ", Numbers)}]");
+                        }
+                        else
                         {
                             Console.WriteLine("[] - the list is empty");
 
-                        }
-                        Console.WriteLine($"The List is - [{string.Join(" ",Numbers)}]");
+                        }                      
                         break;
 
                     case "A":
@@ -39,39 +41,63 @@
                         break;
 
                     case "M":
-                        int SumNumbers = 0;
-                        for (int i = 0; i < Numbers.Count; i++)
+                        if(Numbers.Count > 0)
                         {
-                            SumNumbers += Numbers[i];
+                            int SumNumbers = 0;
+                            for (int i = 0; i < Numbers.Count; i++)
+                            {
+                                SumNumbers += Numbers[i];
+                            }
+                            int CountNumbers = Numbers.Count;
+                            int Mean = SumNumbers / CountNumbers;
+                            Console.WriteLine($"Mean : {Mean}");
+                            
                         }
-                        int CountNumbers = Numbers.Count;
-                        int Mean = SumNumbers/CountNumbers;
-                        Console.WriteLine($"Mean : {Mean}");
+                        else
+                        {
+                            Console.WriteLine("Unable to calculate the mean - no data");
+                        }
                         break;
 
                     case "S":
-                        int smallest = Numbers[0];
-                        for (int i = 0;i <Numbers.Count; i++) {
-                            if (Numbers[i]< smallest)
+                        if (Numbers.Count > 0)
+                        {
+                            int smallest = Numbers[0];
+                            for (int i = 0; i < Numbers.Count; i++)
                             {
-                                smallest = Numbers[i];
-                            }
+                                if (Numbers[i] < smallest)
+                                {
+                                    smallest = Numbers[i];
+                                }
 
+                            }
+                            Console.WriteLine($"the smallest number is : {smallest}");
                         }
-                        Console.WriteLine($"the smallest number is : {smallest}");
+                        else
+                        {
+                            Console.WriteLine("Unable to determine the smallest number - list is empty");
+                        }      
                         break;
 
                     case "L":
-                        int largest = Numbers[0];
-                        for (int i = 0; i < Numbers.Count; i++)
-                        {
-                            if (Numbers[i] > largest)
-                            {
-                                largest = Numbers[i];
-                            }
 
+                        if (Numbers.Count > 0)
+                        {
+                            int largest = Numbers[0];
+                            for (int i = 0; i < Numbers.Count; i++)
+                            {
+                                if (Numbers[i] > largest)
+                                {
+                                    largest = Numbers[i];
+                                }
+
+                            }
+                            Console.WriteLine($"the largest number is : {largest}");
                         }
-                        Console.WriteLine($"the largest number is : {largest}");
+                        else
+                        {
+                            Console.WriteLine("Unable to determine the largest number - list is empty");
+                        }
                         break;
 
                     case "F":                  
