@@ -1,0 +1,121 @@
+﻿namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> Numbers = new List<int>();
+            
+            while (true)
+            {
+                Console.WriteLine("Menu Options :");
+                Console.WriteLine("P - Print numbers");
+                Console.WriteLine("A - Add a number");
+                Console.WriteLine("M - Display mean of the numbers");
+                Console.WriteLine("S - Display the smallest number");
+                Console.WriteLine("L - Display the largest number");
+                Console.WriteLine("F - Find a Number in the list");
+                Console.WriteLine("C - Clear the list");
+                Console.WriteLine("Q - Quit");
+                string ChoiseUser = Console.ReadLine().ToUpper();
+
+                switch (ChoiseUser)
+                {
+                    case "P":
+
+                        if (Numbers.Count == 0)
+                        {
+                            Console.WriteLine("[] - the list is empty");
+
+                        }
+                        Console.WriteLine($"The List is - [{string.Join(" ",Numbers)}]");
+                        break;
+
+                    case "A":
+                        Console.Write("Enter an integer to add : ");
+                        int InputNumber = Convert.ToInt32(Console.ReadLine());
+                        Numbers.Add(InputNumber);
+                        Console.WriteLine($"{InputNumber} added ");
+                        break;
+
+                    case "M":
+                        int SumNumbers = 0;
+                        for (int i = 0; i < Numbers.Count; i++)
+                        {
+                            SumNumbers += Numbers[i];
+                        }
+                        int CountNumbers = Numbers.Count;
+                        int Mean = SumNumbers/CountNumbers;
+                        Console.WriteLine($"Mean : {Mean}");
+                        break;
+
+                    case "S":
+                        int smallest = Numbers[0];
+                        for (int i = 0;i <Numbers.Count; i++) {
+                            if (Numbers[i]< smallest)
+                            {
+                                smallest = Numbers[i];
+                            }
+
+                        }
+                        Console.WriteLine($"the smallest number is : {smallest}");
+                        break;
+
+                    case "L":
+                        int largest = Numbers[0];
+                        for (int i = 0; i < Numbers.Count; i++)
+                        {
+                            if (Numbers[i] > largest)
+                            {
+                                largest = Numbers[i];
+                            }
+
+                        }
+                        Console.WriteLine($"the largest number is : {largest}");
+                        break;
+
+                    case "F":                  
+                        Console.Write($"Enter a number to found: ");
+                        int InputNumberFound = Convert.ToInt32(Console.ReadLine());
+                        bool IsFound = false;
+                        for (int i = 0;i <Numbers.Count; i++)
+                        {
+                            if(InputNumberFound == Numbers[i])
+                            {
+                                
+                                Console.WriteLine($"found at index: {i}");
+                                IsFound = true;
+                                break;
+                            }
+                        }
+                        if (!IsFound)
+                        {
+                            Console.WriteLine($"{InputNumberFound} is not found in the list");
+
+                        }                   
+                        break;
+
+                    case "C":
+                        Numbers.Clear();
+                        Console.WriteLine("List is cleared");
+                        break;
+
+                    case "Q":
+                        Console.WriteLine("Goodbye");
+                        return;
+                    default:
+                        Console.WriteLine("invalid choice, please try again.");
+                        break;
+                }
+                
+            }
+
+
+
+
+
+
+
+        }
+    }
+}
